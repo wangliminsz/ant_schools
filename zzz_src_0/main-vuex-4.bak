@@ -1,0 +1,28 @@
+import { createApp } from 'vue'
+import router from './router'
+import { store } from './store'
+import App from './App.vue'
+
+// fontawesome
+
+import '../node_modules/@fortawesome/fontawesome-free/css/all.css'
+
+// bootstrap css / js
+
+import '../node_modules/bootstrap/dist/css/bootstrap.css'
+import 'bootstrap/dist/js/bootstrap.bundle'
+
+//main css
+
+import './styles.css' 
+
+const app = createApp(App)
+app.use(store)
+app.use(router)
+
+app.mount('#app')
+
+
+// createApp(App)
+//   .use(store) // Add your Vuex store as a plugin to the Vue app
+//   .mount('#app')

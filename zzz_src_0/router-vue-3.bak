@@ -1,0 +1,98 @@
+import { createRouter, createWebHistory } from 'vue-router'
+
+import homePg from "./components/homePg.vue"
+
+import ContactManager from "./views/ContactManager.vue"
+import AddContact from "./views/AddContact.vue"
+import EditContact from "./views/EditContact.vue"
+import ViewContact from "./views/ViewContact.vue"
+
+import PageNotFound from "./views/PageNotFound.vue"
+
+import LoginView from "./views/LoginView.vue"
+
+import { supabase } from '@/clients/supabase'
+
+let localUser;
+
+const routerHistory = createWebHistory();
+
+const router = createRouter({
+    history: routerHistory,
+    routes: [
+        {
+            path: '/',
+            name: 'homePage',
+            redirect: '/contacts',
+            component: homePg
+        },
+        {
+            path: '/contacts',
+            name: 'ContactManager',
+            component: ContactManager
+        },
+        {
+            path: '/contacts/add',
+            name: 'AddContact',
+            component: AddContact,
+            meta: { requiresAuth: true }
+        },
+        {
+            path: '/contacts/edit/:contactId',
+            name: 'EditContact',
+            component: EditContact
+        },
+        {
+            path: '/contacts/view/:contactId',
+            name: 'ViewContact',
+            component: ViewContact
+        },
+        {
+            path: '/:pathMatch(.*)*',
+            name: 'PageNotFound',
+            component: PageNotFound
+        },
+
+        // ------------------------------------------------------------------
+        {
+            path: '/login',
+            name: 'Login',
+            component: LoginView
+        },
+    ]
+});
+
+// getUser
+async function currentUser(next) {
+    try {
+        localUser = await supabase.auth.getSession();
+        if (localUser.data.session) {
+            // // it'ok
+            // console.log(localUser)
+            // console.log('user-id----------->', localUser.data.session.user.id)
+            // console.log('user-email-------->', localUser.data.session.user.email)
+            // // it'ok
+            next();
+        } else {
+            // console.log('not signin')
+            next("/login")
+        }
+
+    }
+    catch (error) {
+        console.log(error)
+    }
+}
+
+//auth Requirement
+router.beforeEach((to, from, next) => {
+    if (to.meta.requiresAuth) {
+        // console.log('requires Auth')
+        currentUser(next);
+    }
+    else {
+        next();
+    }
+})
+
+export default router;
