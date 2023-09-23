@@ -14,10 +14,10 @@
 
     <div v-if="!loading" class="mt-2 px-5 flex flex-col">
         <div class="flex flex-row justify-between">
-            <p class="text-green-500 font-bold mt-2 mb-2"><span style="font-size: 28px;">Ant Global - Schools</span>
+            <p class="text-green-500 font-bold mt-2 mb-2"><span style="font-size: 28px;">Ant Global - Michelin</span>
             </p>
-            <router-link to="/mtable" class="mt-2 mb-2 mr-5">
-                Michelin Link
+            <router-link to="/schooltable" class="mt-2 mb-2 mr-5">
+                Schools Link
             </router-link>
         </div>
 
@@ -57,9 +57,11 @@ const whichUser = computed(() => store.getters.whichUser);
 // import { format } from 'date-fns'
 // import { h } from 'vue'
 import TableTanstack from '@/components/TableTanstack.vue'
-import EditButton from '@/components/EditButton.vue'
-import EditButton1 from '@/components/EditButton1.vue'
-import EditButton2 from '@/components/EditButton2.vue'
+// import EditButton from '@/components/EditButton.vue'
+// import EditButton1 from '@/components/EditButton1.vue'
+// import EditButton2 from '@/components/EditButton2.vue'
+import EditMichelin1 from '@/components/EditMichelin1.vue'
+import EditMichelin2 from '@/components/EditMichelin2.vue'
 
 import { ContactService } from "@/services/ContactService";
 
@@ -72,27 +74,27 @@ const columnsPeople = [
         header: 'ID',
         enableSorting: true,
     },
-    {
-        accessorKey: 'edit',
-        header: 'Edit',
-        cell: ({ row }) => h(EditButton, { id: row.original.id }),
-        enableSorting: false,
-    },
+    // {
+    //     accessorKey: 'edit',
+    //     header: 'Edit',
+    //     cell: ({ row }) => h(EditButton, { id: row.original.id }),
+    //     enableSorting: false,
+    // },
     {
         accessorKey: 'html',
         header: 'Html',
-        cell: ({ row }) => h(EditButton1, { id_1: row.original.id }),
+        cell: ({ row }) => h(EditMichelin1, { id_1: row.original.id }),
         enableSorting: false,
     },
     {
         accessorKey: 'imgs',
         header: 'Imgs',
-        cell: ({ row }) => h(EditButton2, { id_2: row.original.id }),
+        cell: ({ row }) => h(EditMichelin2, { id_2: row.original.id }),
         enableSorting: false,
     },
     {
-        accessorKey: 'school_name',
-        header: 'School Name',
+        accessorKey: 'name',
+        header: 'Michelin Name',
         enableSorting: true,
     },
 ]
@@ -100,7 +102,7 @@ const columnsPeople = [
 // Fetch data when the component is mounted
 onMounted(async () => {
 
-    store.dispatch('loadStateFromLocalStorage')
+    // store.dispatch('loadStateFromLocalStorage')
 
     // const currentUserId = await fetchCurrentUser()
     await fetchCurrentUser()
@@ -113,22 +115,18 @@ onMounted(async () => {
 
         try {
             loading.value = true
-            const response = await ContactService.getSchool()
-            const contacts = response.data.records
-
-            // console.log('vue3 - data', contacts)
+            const response = await ContactService.getMichelin()
+            
+            const contacts = response
+            // console.log('vue3 Michelin - data', contacts)
 
             schools.value = contacts.map(item => item.fields)
-
             // console.log('vue 3________>>', schools.value)
 
             people = schools.value
 
-            //   nextTick(() => {
-            //     people.value = schools.value
-            //   })
-
             loading.value = false
+
         } catch (error) {
             console.log('vue 3 error?', error)
             errorMessage.value = error

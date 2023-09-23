@@ -8,6 +8,11 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 import homePg from "./components/homePg.vue"
 
+// MichelinTable.vue
+import MichelinTable from "./views/MichelinTable.vue"
+import MichelinImgs from "./views/MichelinImgs.vue"
+import MichelinHtml from "./views/MichelinHtml.vue"
+
 import SchoolTable from "./views/SchoolTable.vue"
 import SchoolEdit from "./views/SchoolEdit.vue"
 import SchoolImgs from "./views/SchoolImgs.vue"
@@ -68,6 +73,29 @@ const router = createRouter({
       component: homePg,
       meta: { requiresAuth: true }
     },
+
+    {
+      path: '/mtable',
+      name: 'MichelinTable',
+      component: MichelinTable,
+      meta: { requiresAuth: true }
+    },
+
+    // /michelinimgs/add/${id_2}
+    {
+      path: '/michelinhtml/:contactId',
+      name: 'MichelinHtml',
+      component: MichelinHtml,
+      meta: { requiresAuth: true }
+    },
+    {
+      path: '/michelinimgs/add/:contactId',
+      name: 'MichelinImgs',
+      component: MichelinImgs,
+      meta: { requiresAuth: true }
+    },
+
+    // ~~~~~~~~~~~~~~~~~~
 
     {
       path: '/schooltable',

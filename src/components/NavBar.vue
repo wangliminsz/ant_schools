@@ -6,7 +6,7 @@
 
                 <router-link to="/" class="flex items-center text-white font-bold no-underline">
                     <i class="fa fa-mobile fa-lg mr-1"></i>
-                    <span class="ml-2 text-xl myfont">Ant Bangkok Schools</span>
+                    <span class="ml-2 text-xl myfont">Ant Bangkok antbkk.info</span>
                 </router-link>
 
             </div>
