@@ -18,6 +18,11 @@ import SchoolEdit from "./views/SchoolEdit.vue"
 import SchoolImgs from "./views/SchoolImgs.vue"
 import SchoolHtml from "./views/SchoolHtml.vue"
 
+import SchoolTable_pattaya from "./views/SchoolTable_pattaya.vue"
+import SchoolEdit_pattaya from "./views/SchoolEdit_pattaya.vue"
+import SchoolImgs_pattaya from "./views/SchoolImgs_pattaya.vue"
+import SchoolHtml_pattaya from "./views/SchoolHtml_pattaya.vue"
+
 import ContactManager from "./views/ContactManager.vue"
 import AddContact from "./views/AddContact.vue"
 import EditContact from "./views/EditContact.vue"
@@ -103,25 +108,67 @@ const router = createRouter({
       component: SchoolTable,
       meta: { requiresAuth: true }
     },
+
+    // ~~~~~~~~~~~~~~~~~~
+
+    {
+      path: '/schooltable_pattaya',
+      name: 'SchoolTable_pattaya',
+      component: SchoolTable_pattaya,
+      meta: { requiresAuth: true }
+    },
+
+    // ~~~~~~~~~~~~~~~~~~
+
     // schoolhtml/${id_1}
+
     {
       path: '/schoolhtml/:contactId',
       name: 'SchoolHtml',
       component: SchoolHtml,
       meta: { requiresAuth: true }
     },
+
+    {
+      path: '/schoolhtml_pattaya/:contactId',
+      name: 'SchoolHtml_pattaya',
+      component: SchoolHtml_pattaya,
+      meta: { requiresAuth: true }
+    },
+
+    // ~~~~~~~~~~~~~~~~~~
+
     {
       path: '/schoolimgs/add/:contactId',
       name: 'SchoolImgs',
       component: SchoolImgs,
       meta: { requiresAuth: true }
     },
+
+    {
+      path: '/schoolimgs_pattaya/add/:contactId',
+      name: 'SchoolImgs_pattaya',
+      component: SchoolImgs_pattaya,
+      meta: { requiresAuth: true }
+    },
+
+    // ~~~~~~~~~~~~~~~~~~
+
     {
       path: '/schooltable/edit/:contactId',
       name: 'SchoolEdit',
       component: SchoolEdit,
       meta: { requiresAuth: true }
     },
+
+    {
+      path: '/schooltable_pattaya/edit/:contactId',
+      name: 'SchoolEdit_pattaya',
+      component: SchoolEdit_pattaya,
+      meta: { requiresAuth: true }
+    },
+
+    // ~~~~~~~~~~~~~~~~~~
 
     // ------------------------------------------------------------------
 

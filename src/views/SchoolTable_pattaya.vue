@@ -15,10 +15,10 @@
     <div v-if="!loading" class="mt-2 px-5 flex flex-col">
         <div class="flex flex-row justify-between">
             <div class="flex flex-row items-center">
-                <p class="text-green-500 font-bold mt-2 mb-2"><span style="font-size: 28px;">Ant Global - Bangkok Schools</span>
+                <p class="text-green-500 font-bold mt-2 mb-2"><span style="font-size: 28px;">Ant Global - Pattaya Schools</span>
                 </p>
-                <router-link to="/schooltable_pattaya" class="mt-2 mb-2 ml-5 mr-5">
-                    goto Pattaya Schools
+                <router-link to="/schooltable" class="mt-2 mb-2 ml-5 mr-5">
+                    goto Bangkok Schools
                 </router-link>
             </div>
             <div class="flex flex-row items-center">
@@ -34,12 +34,16 @@
                 Welcome {{ whichUser }}
             </p>
             <div v-if="!loading" class="text-base mt-3 ml-10 flex flex-col">
-            Bangkok
+            Pattaya
             </div>
 
         </div>
 
     </div>
+
+    <!-- <div v-if="!loading" class="mt-2 px-5 flex flex-col">
+        Pattaya
+    </div> -->
 
     <div v-if="!loading" class="mx-3 w-60% text-lg">
         <TableTanstack class="text-lg" :data="people" :columns="columnsPeople" :options="{ perPage: 26 }" />
@@ -71,9 +75,15 @@ const whichUser = computed(() => store.getters.whichUser);
 // import { format } from 'date-fns'
 // import { h } from 'vue'
 import TableTanstack from '@/components/TableTanstack.vue'
+
 import EditButton from '@/components/EditButton.vue'
+import EditButton_pattaya from '@/components/EditButton_pattaya.vue'
+
 import EditButton1 from '@/components/EditButton1.vue'
 import EditButton2 from '@/components/EditButton2.vue'
+
+import EditButton1_pattaya from '@/components/EditButton1_pattaya.vue'
+import EditButton2_pattaya from '@/components/EditButton2_pattaya.vue'
 
 import { ContactService } from "@/services/ContactService";
 
@@ -89,19 +99,19 @@ const columnsPeople = [
     {
         accessorKey: 'edit',
         header: 'Edit',
-        cell: ({ row }) => h(EditButton, { id: row.original.id }),
+        cell: ({ row }) => h(EditButton_pattaya, { id: row.original.id }),
         enableSorting: false,
     },
     {
         accessorKey: 'html',
         header: 'Html',
-        cell: ({ row }) => h(EditButton1, { id_1: row.original.id }),
+        cell: ({ row }) => h(EditButton1_pattaya, { id_1: row.original.id }),
         enableSorting: false,
     },
     {
         accessorKey: 'imgs',
         header: 'Imgs',
-        cell: ({ row }) => h(EditButton2, { id_2: row.original.id }),
+        cell: ({ row }) => h(EditButton2_pattaya, { id_2: row.original.id }),
         enableSorting: false,
     },
     {
@@ -127,7 +137,7 @@ onMounted(async () => {
 
         try {
             loading.value = true
-            const response = await ContactService.getSchool()
+            const response = await ContactService.getSchool_pattaya()
             const contacts = response.data.records
 
             // console.log('vue3 - data', contacts)
