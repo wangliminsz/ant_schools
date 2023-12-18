@@ -77,61 +77,9 @@
 
                 <!-- 编辑框区域 ~~~~~~~ -->
 
-                <div class="flex flex-row justify-start">
-
-                    <!-- 1 ~~~~~~ -->
-
-                    <div class="mt-5 mb-2" v-if="contact && contact.fields">
-
-                        <textarea id="the_images" rows="30" v-model="contact_html.html_1"
-                            class="w-56 p-2.5 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            placeholder=""></textarea>
-
-                    </div>
-
-                    <!-- 2 ~~~~~~ -->
-
-                    <div class="mt-5 mb-2 ml-5" v-if="contact && contact.fields">
-
-                        <textarea id="the_images" rows="30" v-model="contact_html.html_2"
-                            class="w-56 p-2.5 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            placeholder=""></textarea>
-
-                    </div>
-
-                    <!-- 3 ~~~~~~ -->
-
-                    <div class="mt-5 mb-2 ml-5" v-if="contact && contact.fields">
-
-                        <textarea id="the_images" rows="30" v-model="contact_html.html_3"
-                            class="w-56 p-2.5 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            placeholder=""></textarea>
-
-                    </div>
-
-                    <!-- 4 ~~~~~~ -->
-
-                    <div class="mt-5 mb-2 ml-5" v-if="contact && contact.fields">
-
-                        <textarea id="the_images" rows="30" v-model="contact_html.html_4"
-                            class="w-56 p-2.5 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            placeholder=""></textarea>
-
-                    </div>
-
-                    <!-- 5 ~~~~~~ -->
-
-                    <div class="mt-5 mb-2 ml-5" v-if="contact && contact.fields">
-
-                        <textarea id="the_images" rows="30" v-model="contact_html.html_5"
-                            class="w-56 p-2.5 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            placeholder=""></textarea>
-
-                    </div>
-
-                    <!-- ~~~~~~ -->
-
-                </div>
+                <textarea id="the_images" rows="30" v-model="contact_html.html_1"
+                            class="mt-8 p-2 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            style="width: 100%;" placeholder=""></textarea>
 
                 <!-- 编辑框区域 ~~~~~~~ -->
 
